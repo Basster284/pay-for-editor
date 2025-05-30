@@ -1,0 +1,26 @@
+{
+	"geode": "4.5.0",
+	"gd": {
+		"win": "2.2074",
+		"android": "2.2074",
+		"mac": "2.2074",
+		"ios": "2.2074"
+	},
+	"id": "basster397.pay_for_editor",
+	"name": "pay for editor",
+	"version": "v1.0.0",
+	"developer": "basster397",
+	"description": "pay for editor lol",
+	"settings": {
+        "title": {
+            "type": "title",
+            "name": "Mod settings"
+		},
+		"bool-safe-mode": {
+    		"type": "bool",
+    		"name": "Enable safe mode",
+    		"description": "You will dont lose your mana orbs for editor",
+    		"default": true
+		}
+    }
+}
