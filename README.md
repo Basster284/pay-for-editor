@@ -2,4 +2,4 @@
 
 <img src="logo.png" width="150" alt="mod logo" />
 
-dont build **shit**
+Cosmetic mod that _require_ **10000* mana orbs to unlock editor.
