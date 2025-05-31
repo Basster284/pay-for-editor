@@ -16,16 +16,17 @@ class $modify(MyMenuLayer, MenuLayer) {
         if (!MenuLayer::init()) 
             return false;
 
-        if (!m_openedWarning) {
-            auto alert = FLAlertLayer::create(
-                "Warning",
-                "This is 'pay for editor' mod. By default, you will not lose mana orbs when you buying an editor, "
-                "but you can turn it off in mod settings.",
-                "ok"
-            );
-            alert->m_scene = this;
-            alert->show();
-            m_openedWarning = true;
+        if(Mod::get()->getSettingValue<bool>("bool-disable-popup") == false){
+            if (!m_openedWarning) {
+                auto alert = FLAlertLayer::create(
+                    "Warning",
+                    "You got <cg>safe</c> version of <cy>pay for editor</c> mod. This means that you will not be able to spend your mana orbs for an editor",
+                    "ok"
+                );
+                alert->m_scene = this;
+                alert->show();
+                m_openedWarning = true;
+            }
         }
         return true;
     }
@@ -85,15 +86,8 @@ class $modify(Layer, CreatorLayer) {
     }
 
     void onMyLevels(CCObject*) {
-        if (isEditorAvaliable) {
-            auto searchObj = GJSearchObject::create(SearchType::MyLevels);
-            auto layer = LevelBrowserLayer::scene(searchObj);
-            auto transition = CCTransitionFade::create(0.5f, layer);
-            CCDirector::sharedDirector()->pushScene(transition);
-            return;
-        }
-		else{
-			geode::createQuickPopup(
+        if (!isEditorAvaliable) {
+            geode::createQuickPopup(
             "Editor",
             "Do you want to <cg>buy</c> this <co>Editor</c> for <cy>10,000</c> <cb>Mana Orbs?</c>",
             "No", 
@@ -108,9 +102,14 @@ class $modify(Layer, CreatorLayer) {
                     CCDirector::sharedDirector()->pushScene(transition);
                 }
             }
-        );
-		}
-        
-        
+            );
+        }
+		else if (isEditorAvaliable){
+            auto searchObj = GJSearchObject::create(SearchType::MyLevels);
+            auto layer = LevelBrowserLayer::scene(searchObj);
+            auto transition = CCTransitionFade::create(0.5f, layer);
+            CCDirector::sharedDirector()->pushScene(transition);
+            return;
+		} 
     }
 };

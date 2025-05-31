@@ -6,21 +6,21 @@
 		"mac": "2.2074",
 		"ios": "2.2074"
 	},
-	"id": "basster397.pay_for_editor",
+	"id": "basster284.pay_for_editor",
 	"name": "pay for editor",
 	"version": "v1.0.0",
-	"developer": "basster397",
+	"developer": "basster284",
 	"description": "pay for editor lol",
 	"settings": {
         "title": {
             "type": "title",
-            "name": "Mod settings"
+            "name": "Popup settings"
 		},
-		"bool-safe-mode": {
+		"bool-disable-popup": {
     		"type": "bool",
-    		"name": "Enable safe mode",
-    		"description": "You will dont lose your mana orbs for editor",
-    		"default": true
+    		"name": "Dont show popup on start",
+    		"description": "Blocks popup when entering the game",
+    		"default": false
 		}
     }
 }
